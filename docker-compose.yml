@@ -9,7 +9,9 @@ services:
     ports:
     - "8000:80"
     volumes:
-    - ./logs:/var/www/html/storage/logs
+    - ./logs:/var/www/logs
+#mount html folder to workspcace with read write access
+    - ./:/var/www/html/:rw
     depends_on:
     - mariadb
     - redis

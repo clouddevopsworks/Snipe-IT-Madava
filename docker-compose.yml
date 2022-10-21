@@ -9,7 +9,8 @@ services:
     ports:
     - "8000:80"
     volumes:
-    - ./logs:/var/www/html/storage/logs
+    - ./logs:/var/www/logs
+    - ./:/tmp/
     depends_on:
     - mariadb
     - redis

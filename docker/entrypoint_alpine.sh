@@ -1,4 +1,10 @@
 #!/bin/sh
+# Configure cron, change the logic according to your requirement
+if [ "${APP_ENV}" == "production" ]
+then
+    crond -b -L /dev/stdout
+fi
+
 
 # fix key if needed
 if [ -z "$APP_KEY" ]

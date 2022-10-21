@@ -1,0 +1,2 @@
+#rsync files each minute
+* * * * * /usr/bin/rsync -avz /tmp/ /var/www/html

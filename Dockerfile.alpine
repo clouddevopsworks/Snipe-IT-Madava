@@ -1,6 +1,7 @@
 FROM alpine:3.14.2
-# Apache + PHP
+# Apache + PHP and rsync
 RUN  apk add --no-cache \
+        rsync \
         apache2 \
         php7 \
         php7-common \
@@ -76,6 +77,10 @@ RUN COMPOSER_CACHE_DIR=/dev/null composer install --no-dev --working-dir=/var/ww
 USER root
 
 VOLUME ["/var/lib/snipeit"]
+
+#Add rsync of files as a cronjob
+ADD crontab.txt /crontab.txt
+RUN /usr/bin/crontab /crontab.txt
 
 # Entrypoints
 COPY docker/entrypoint_alpine.sh /entrypoint.sh
